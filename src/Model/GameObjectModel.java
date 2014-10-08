@@ -3,7 +3,7 @@ package Model;
 /**
  * Created by vadim on 10/8/14.
  */
-public abstract class GameObjectModel {
+public abstract class GameObjectModel implements OnCollisionWith {
 
     public void destroy() {
 

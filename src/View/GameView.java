@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * Created by vadim on 10/8/14.
  */
-public class GameView extends Game{
+public class GameView extends Game {
 
 
     @Override
