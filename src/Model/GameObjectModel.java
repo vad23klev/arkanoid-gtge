@@ -13,21 +13,21 @@ public abstract class GameObjectModel implements OnCollisionWith {
         view.destroy();
     }
 
-    public float[] getPosition() {
+    public double[] getPosition() {
 
         return view.getPosition();
     }
 
-    public void setPosition(float[] position) {
+    public void setPosition(double[] position) {
         view.setPosition(position);
     }
 
-    public float[] getSpead() {
+    public double[] getSpead() {
 
         return view.getSpead();
     }
 
-    public void setSpead(float[] spead) {
+    public void setSpead(double[] spead) {
         view.setSpead(spead);
 
     }
