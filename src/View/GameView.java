@@ -1,5 +1,7 @@
 package View;
+import Model.GameObjectModel;
 import com.golden.gamedev.Game;
+import com.golden.gamedev.object.Sprite;
 
 import java.awt.*;
 
@@ -8,6 +10,8 @@ import java.awt.*;
  */
 public class GameView extends Game {
 
+    private GameObjectModel[] objects;
+    private GameObjectView[] views;
 
     @Override
     public void initResources() {
@@ -27,5 +31,14 @@ public class GameView extends Game {
 
     public static void main(String args[]) {
 
+    }
+
+
+    public GameObjectView find_view(Sprite sprite) {
+        return null;
+    }
+
+    public GameObjectModel find_model(GameObjectView view) {
+        return null;
     }
 }
