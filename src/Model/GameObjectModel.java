@@ -8,6 +8,7 @@ import View.GameObjectView;
 public abstract class GameObjectModel implements OnCollisionWith {
 
     protected GameObjectView view;
+    protected Mediator mediator;
 
     public void destroy() {
         view.destroy();
