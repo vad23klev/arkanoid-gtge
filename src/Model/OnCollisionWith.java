@@ -8,4 +8,5 @@ public interface OnCollisionWith {
     public void CollisionWith(Ball opponent, int side);
     public void CollisionWith(Racket opponent, int side);
     public void CollisionWith(Roy opponent, int side);
+    public void CollisionWith(Board opponent, int side);
 }

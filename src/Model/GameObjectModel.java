@@ -28,8 +28,8 @@ public abstract class GameObjectModel implements OnCollisionWith {
         return view.getSpead();
     }
 
-    public void setSpead(double[] spead) {
-        view.setSpead(spead);
+    public void setSpead(double[] speed) {
+        view.setSpead(speed);
 
     }
 
@@ -50,6 +50,11 @@ public abstract class GameObjectModel implements OnCollisionWith {
 
     @Override
     public void CollisionWith(Roy opponent, int side) {
+
+    }
+
+    @Override
+    public void CollisionWith(Board opponent, int side) {
 
     }
 }

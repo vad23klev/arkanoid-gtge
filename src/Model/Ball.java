@@ -5,5 +5,4 @@ package Model;
  */
 public class Ball extends GameObjectModel{
 
-    protected int lives;
 }
