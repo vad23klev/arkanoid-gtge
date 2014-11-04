@@ -35,10 +35,15 @@ public class GameView extends Game {
 
 
     public GameObjectView find_view(Sprite sprite) {
+        for(int i = 0; i < views.length; i++) {
+            if (views[i].isMySprite(sprite)) {
+                return views[i];
+            }
+        }
         return null;
     }
 
     public GameObjectModel find_model(GameObjectView view) {
-        return null;
+        return view.getModel();
     }
 }
