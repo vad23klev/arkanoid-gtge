@@ -1,6 +1,7 @@
 package Model;
 
 import View.GameObjectView;
+import Physics.*;
 
 /**
  * Created by vadim on 10/8/14.
@@ -12,25 +13,24 @@ public abstract class GameObjectModel implements OnCollisionWith {
 
     public void destroy() {
         view.destroy();
+        this.view = null;
+        this.mediator = null;
     }
 
-    public double[] getPosition() {
-
+    public Position getPosition() {
         return view.getPosition();
     }
 
-    public void setPosition(double[] position) {
+    public void setPosition(Position position) {
         view.setPosition(position);
     }
 
-    public double[] getSpead() {
-
-        return view.getSpead();
+    public Speed getSpeed() {
+        return view.getSpeed();
     }
 
-    public void setSpead(double[] speed) {
-        view.setSpead(speed);
-
+    public void setSpeed(Speed speed) {
+        view.setSpeed(speed);
     }
 
     @Override
@@ -56,5 +56,13 @@ public abstract class GameObjectModel implements OnCollisionWith {
     @Override
     public void CollisionWith(Board opponent, int side) {
 
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        return  (this.view != null) &&
+                (((GameObjectModel)object).view != null) &&
+                (this.getPosition().equals(((Ball)object).getPosition())) &&
+                (this.getSpeed().equals(((Ball)object).getSpeed()));
     }
 }
