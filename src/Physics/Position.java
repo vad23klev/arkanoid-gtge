@@ -20,4 +20,9 @@ public class Position {
         this.X = x;
         this.Y = y;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        return (this.X == ((Position)object).X) && (this.Y == ((Position)object).Y);
+    }
 }

@@ -20,4 +20,9 @@ public class Speed {
         this.Horizontal = horizontal;
         this.Vertical = vertical;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        return (this.Horizontal == ((Speed)object).Horizontal) && (this.Vertical == ((Speed)object).Vertical);
+    }
 }
