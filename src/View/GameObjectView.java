@@ -1,5 +1,6 @@
 package View;
 
+import Model.GameObjectModel;
 import com.golden.gamedev.object.SpriteGroup;
 
 /**
@@ -8,6 +9,7 @@ import com.golden.gamedev.object.SpriteGroup;
 public abstract class GameObjectView {
 
     protected SpriteGroup sprites;
+    protected GameObjectModel model;
 
     public void destroy() {
 
