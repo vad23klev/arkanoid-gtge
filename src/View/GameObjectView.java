@@ -1,6 +1,7 @@
 package View;
 
 import Model.GameObjectModel;
+import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.SpriteGroup;
 import Physics.*;
 
@@ -10,6 +11,11 @@ import Physics.*;
 public abstract class GameObjectView {
 
     protected SpriteGroup sprites;
+
+    public GameObjectModel getModel() {
+        return model;
+    }
+
     protected GameObjectModel model;
 
     public void destroy() {
@@ -30,5 +36,14 @@ public abstract class GameObjectView {
 
     public void setSpeed(Speed speed) {
 
+    }
+
+    public boolean isMySprite(Sprite sprite) {
+        for (int i=0; i < sprites.getSprites().length ;i++) {
+            if (sprite.equals(sprites.getSprites()[i])) {
+                return true;
+            }
+        }
+        return false;
     }
 }
