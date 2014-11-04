@@ -2,6 +2,7 @@ package View;
 
 import Model.GameObjectModel;
 import com.golden.gamedev.object.SpriteGroup;
+import Physics.*;
 
 /**
  * Created by vadim on 10/8/14.
@@ -15,23 +16,19 @@ public abstract class GameObjectView {
 
     }
 
-    public double[] getPosition() {
-        double [] p = new double[2];
-        p[0] = sprites.getSprites()[0].getX();
-        p[1] = sprites.getSprites()[0].getY();
-        return p;
+    public Position getPosition() {
+        return new Position(sprites.getSprites()[0].getX(), sprites.getSprites()[0].getY());
     }
 
-    public void setPosition(double[] position) {
+    public void setPosition(Position position) {
 
     }
 
-    public double[] getSpead() {
-
+    public Speed getSpeed() {
         return null;
     }
 
-    public void setSpead(double[] spead) {
+    public void setSpeed(Speed speed) {
 
     }
 }
