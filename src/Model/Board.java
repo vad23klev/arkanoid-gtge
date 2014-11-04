@@ -5,4 +5,9 @@ package Model;
  */
 public class Board  extends GameObjectModel {
 
+    @Override
+    public void CollisionWith(Ball opponent, int side) {
+
+    }
+
 }
