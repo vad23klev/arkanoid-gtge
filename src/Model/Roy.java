@@ -17,5 +17,13 @@ public class Roy  extends GameObjectModel {
     public void CollisionWith(Ball opponent, int side) {
 
     }
+
+    public void add_element(GameObjectModel object) {
+
+    }
+
+    public void merge(GameObjectModel[] roys) {
+
+    }
     
 }
