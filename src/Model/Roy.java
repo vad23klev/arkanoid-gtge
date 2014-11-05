@@ -9,16 +9,14 @@ import View.RoyView;
  */
 public class Roy  extends GameObjectModel {
 
-    /**
-     * Конструктор.
-     * @param position - позиция роя в начальный момент времени.
-     */
     final int MAX_ELEMENT_COUNT = 3;
+    protected RoyElement[] elements;
     /**
      * Конструктор.
      * @param position - позиция роя в начальный момент времени.
      */
     public Roy(Position position) {
+        this.elements = new RoyElement[MAX_ELEMENT_COUNT];
         this.mediator = new Mediator();
         this.view = new RoyView();
     }
@@ -32,10 +30,17 @@ public class Roy  extends GameObjectModel {
     }
 
     /**
-     * Конструктор.
+     * Добавления нового элемента в рой.
      * @param element - элемент попадающий в рой.
      */
     public void Append(GameObjectModel element) {
 
+    }
+
+    /**
+     * Проверка переполнения роя.
+     */
+    public boolean CheckOverflow() {
+        return false;
     }
 }
