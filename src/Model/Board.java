@@ -13,6 +13,10 @@ public class Board  extends GameObjectModel {
         this.view = new BoardView();
     }
 
+    protected void remove(GameObjectModel object) {
+
+    }
+
     @Override
     public void CollisionWith(Ball opponent, int side) {
 
