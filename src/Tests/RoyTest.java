@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class RoyTest {
     @Test
-    /** Тест на добавление элемента в рой */
+    /** Тест на добавление элемента в рой. */
     public void Add_element() throws Exception {
 
     }

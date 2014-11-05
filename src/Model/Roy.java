@@ -4,26 +4,17 @@ import Physics.*;
 import View.RoyView;
 
 /**
+ * Класс для описания модели роя.
  * Created by vadim on 10/8/14.
  */
 public class Roy  extends GameObjectModel {
 
+    /**
+     * Конструктор.
+     * @param position - позиция роя в начальный момент времени.
+     */
     public Roy(Position position) {
         this.mediator = new Mediator();
         this.view = new RoyView();
     }
-
-    @Override
-    public void CollisionWith(Ball opponent, int side) {
-
-    }
-
-    public void add_element(GameObjectModel object) {
-
-    }
-
-    public void merge(GameObjectModel[] roys) {
-
-    }
-    
 }

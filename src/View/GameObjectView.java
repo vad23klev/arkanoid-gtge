@@ -6,12 +6,18 @@ import com.golden.gamedev.object.SpriteGroup;
 import Physics.*;
 
 /**
+ * Класс для описания игрового представления.
  * Created by vadim on 10/8/14.
  */
 public abstract class GameObjectView {
 
+    /** Контейнер стпрайтов. */
     protected SpriteGroup sprites;
 
+    /**
+     * Получить модель представления.
+     * @return модель представления.
+     */
     public GameObjectModel getModel() {
         return model;
     }

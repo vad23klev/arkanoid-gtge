@@ -4,18 +4,16 @@ import View.RoyElementView;
 import Physics.*;
 
 /**
+ * Класс для описания модели элемента роя.
  * Created by vadim on 10/8/14.
  */
 public class RoyElement extends GameObjectModel{
 
-    public RoyElement(Position position) {
+    /**
+     * Конструктор.
+     */
+    public RoyElement() {
         this.mediator = new Mediator();
         this.view = new RoyElementView();
     }
-
-    @Override
-    public void CollisionWith(Ball opponent, int side) {
-
-    }
-
 }

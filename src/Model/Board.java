@@ -4,22 +4,24 @@ import Physics.*;
 import View.BoardView;
 
 /**
+ * Класс для описания модели доски.
  * Created by vadim on 10/8/14.
  */
 public class Board  extends GameObjectModel {
 
-    public Board(Position position) {
+    /**
+     * Конструткор.
+     */
+    public Board() {
         this.mediator = new Mediator();
         this.view = new BoardView();
     }
 
+    /**
+     * Удаления модели с игрового поля.
+     * @param object - модель для удаления.
+     */
     protected void remove(GameObjectModel object) {
 
     }
-
-    @Override
-    public void CollisionWith(Ball opponent, int side) {
-
-    }
-
 }

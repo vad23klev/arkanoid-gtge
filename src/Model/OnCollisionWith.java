@@ -1,6 +1,7 @@
 package Model;
 
 /**
+ * Интерфейс методов обработки коллизий.
  * Created by vadim on 10/8/14.
  */
 public interface OnCollisionWith {
