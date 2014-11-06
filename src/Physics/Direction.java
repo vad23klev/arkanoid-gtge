@@ -6,14 +6,14 @@ package Physics;
 public class Direction {
 
     /** Направление выраженное через угол. */
-    protected final Integer direction;
+    protected final int angle;
 
     /**
      * Конструктор.
      * @param dir - направление в градусах.
      */
-    protected Direction(Integer dir) {
-        this.direction = dir;
+    protected Direction(int dir) {
+        this.angle = dir;
     }
 
     /**
@@ -82,6 +82,14 @@ public class Direction {
 
     @Override
     public boolean equals(Object object) {
-        return (object != null) && (this.direction == ((Direction)object).direction);
+        return (object != null) && (this.angle == ((Direction)object).angle);
+    }
+
+    /**
+     * Вернуть угол текущего направления.
+     * @return угол.
+     */
+    public int Angle() {
+        return this.angle;
     }
 }
