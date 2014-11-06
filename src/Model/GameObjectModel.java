@@ -88,4 +88,40 @@ public abstract class GameObjectModel implements OnCollisionWith {
                 (this.getPosition().equals(((Ball)object).getPosition())) &&
                 (this.getSpeed().equals(((Ball)object).getSpeed()));
     }
+
+    /**
+     * Функция-реакция на удар.
+     * @param direct - направление удара.
+     */
+    protected void hit(Direction direct) {
+        if (direct.Angle() == Direction.Left().Angle() || direct.Angle() == Direction.Right().Angle()) {
+            hitByVerticalWall();
+        } else if (direct.Angle() == Direction.Bottom().Angle() || direct.Angle() == Direction.Top().Angle()) {
+            hitByHorizontalWall();
+        } else {
+            hitByCorner(direct);
+        }
+    }
+
+    /**
+     * Функция-реакция удар с уголком.
+     * @param direct- направление удара.
+     */
+    protected void hitByCorner(Direction direct) {
+
+    }
+
+    /**
+     * Функция-реакция на удар с горизонтальной стеной.
+     */
+    protected void hitByHorizontalWall() {
+
+    }
+
+    /**
+     * Функция-реакция на удар с вертикальной стеной.
+     */
+    protected void hitByVerticalWall() {
+
+    }
 }
