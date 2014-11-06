@@ -9,11 +9,21 @@ import Physics.*;
  */
 public class RoyElement extends GameObjectModel{
 
+    protected final Roy parent;
+
     /**
      * Конструктор.
      */
-    public RoyElement() {
+    public RoyElement(Roy parent) {
         this.mediator = new Mediator();
         this.view = new RoyElementView();
+        this.parent = parent;
+    }
+
+    /**
+     * Возвращаем рой.
+     */
+    public Roy getParent() {
+        return parent;
     }
 }
