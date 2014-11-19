@@ -18,6 +18,18 @@ public class RoyTest {
     }
 
     @Test
+    /** Тест на объединение 2 роев(побочный рой). */
+    public void Merge_1_roy_side() throws Exception {
+
+    }
+
+    @Test
+    /** Тест на объединение 3 роев(побочный рой). */
+    public void Merge_2_roy_side() throws Exception {
+
+    }
+
+    @Test
     /** Тест на объединение 2 роев. */
     public void Merge_1_roy() throws Exception {
 
