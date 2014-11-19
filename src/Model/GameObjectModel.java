@@ -93,7 +93,7 @@ public abstract class GameObjectModel implements OnCollisionWith {
      * Функция-реакция на удар.
      * @param direct - направление удара.
      */
-    protected void hit(Direction direct) {
+    public void hit(Direction direct) {
         if (direct.Angle() == Direction.Left().Angle() || direct.Angle() == Direction.Right().Angle()) {
             hitByVerticalWall();
         } else if (direct.Angle() == Direction.Bottom().Angle() || direct.Angle() == Direction.Top().Angle()) {
