@@ -1,106 +1,116 @@
 package Tests;
 
+import Model.Ball;
+import Physics.Direction;
+import Physics.Position;
+import Physics.Speed;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.Assert;
 
 public class BallTest {
 
-    @Test
-    /** Тест коллизии шара с кирпичем, точка касания сверху шара. */
-    public void TopCollisionWithBrick() throws Exception {
+    private Ball ball;
+
+    @Before
+    public void ball() {
+        this.ball = new Ball(new Position(0,0));
     }
 
     @Test
-    /** Тест коллизии шара с кирпичем, точка касания снизу шара. */
-    public void BottomCollisionWithBrick() throws Exception {
+    /** Тест обобщенных методов, точка касания сверху шара. */
+    public void TopCollision() throws Exception {
+        ball();
+        ball.setSpeed(new Speed(1,1));
+        ball.hit(Direction.Top());
+        Assert.assertTrue("Speed not equal. Top collision(Ball).", ball.getSpeed().equals(new Speed(1, -1)));
     }
 
     @Test
-    /** Тест коллизии шара с кирпичем, точка касания слева шара. */
-    public void LeftCollisionWithBrick() throws Exception {
+    /** Тест обобщенных методов, точка касания снизу шара. */
+    public void BottomCollision() throws Exception {
+        ball();
+        ball.setSpeed(new Speed(1,-1));
+        ball.hit(Direction.Bottom());
+        Assert.assertTrue("Speed not equal. Bottom collision(Ball).",ball.getSpeed().equals(new Speed(1,1)));
     }
 
     @Test
-    /** Тест коллизии шара с кирпичем, точка касания справа шара. */
-    public void RightCollisionWithBrick() throws Exception {
+    /** Тест обобщенных методов, точка касания слева шара. */
+    public void LeftCollision() throws Exception {
+        ball();
+        ball.setSpeed(new Speed(1,1));
+        ball.hit(Direction.Left());
+        Assert.assertTrue("Speed not equal. Left collision(Ball).",ball.getSpeed().equals(new Speed(-1,1)));
     }
 
     @Test
-    /** Тест коллизии шара и доски, точка касания сверху шара. */
-    public void TopCollisionWithBoard() throws Exception {
+    /** Тест обобщенных методов, точка касания справа шара. */
+    public void RightCollision() throws Exception {
+        ball();
+        ball.setSpeed(new Speed(-1,1));
+        ball.hit(Direction.Right());
+        Assert.assertTrue("Speed not equal. Right collision(Ball).",ball.getSpeed().equals(new Speed(1,1)));
     }
 
     @Test
-    /** Тест коллизии шара и доски, точка касания снизу шара. */
-    public void BottomCollisionWithBoard() throws Exception {
+    /** Тест обобщенных методов, точки касания сверху и слева шара. */
+    public void TopLeftCollision() throws Exception {
+        ball();
+        ball.setSpeed(new Speed(-1,1));
+        ball.hit(Direction.LeftTop());
+        Assert.assertTrue("Speed not equal. TopLeft collision(Ball).",ball.getSpeed().equals(new Speed(1,-1)));
     }
 
     @Test
-    /** Тест коллизии шара и доски, точка касания слева шара. */
-    public void LeftCollisionWithBoard() throws Exception {
+    /** Тест обобщенных методов, точки касания слева и снизу шара. */
+    public void BottomLeftCollision() throws Exception {
+        ball();
+        ball.setSpeed(new Speed(1,1));
+        ball.hit(Direction.LeftBottom());
+        Assert.assertTrue("Speed not equal. BottomLeft collision(Ball).",ball.getSpeed().equals(new Speed(-1,-1)));
     }
 
     @Test
-    /** Тест коллизии шара и доски, точка касания справа шара. */
-    public void RightCollisionWithBoard() throws Exception {
+    /** Тест обобщенных методов, точки касания снизу и справа шара. */
+    public void BottomRightCollision() throws Exception {
+        ball();
+        ball.setSpeed(new Speed(1,1));
+        ball.hit(Direction.RightBottom());
+        Assert.assertTrue("Speed not equal. BottomRight collision(Ball).",ball.getSpeed().equals(new Speed(-1,-1)));
     }
 
     @Test
-    /** Тест коллизии шара и ракетки, точка касания сверху шара. */
-    public void TopCollisionWithRacket() throws Exception {
+    /** Тест обобщенных методов, точки касания справа и сверху шара. */
+    public void TopRightCollision() throws Exception {
+        ball();
+        ball.setSpeed(new Speed(1,1));
+        ball.hit(Direction.RightTop());
+        Assert.assertTrue("Speed not equal. TopRight collision(Ball).",ball.getSpeed().equals(new Speed(-1,-1)));
     }
 
     @Test
-    /** Тест коллизии шара и ракетки, точка касания снизу шара. */
-    public void BottomCollisionWithRacket() throws Exception {
+    /** Тест коллизии шара и ракетки, точка касания по центру ракетки. */
+    public void CenterCollisionWithRacket() throws Exception {
     }
 
     @Test
-    /** Тест коллизии шара и ракетки, точка касания слева шара. */
+    /** Тест коллизии шара и ракетки, точка касания слевой стороны ракетки.. */
     public void LeftCollisionWithRacket() throws Exception {
     }
 
     @Test
-    /** Тест коллизии шара и ракетки, точка касания справа шара. */
+    /** Тест коллизии шара и ракетки, точка касания справой стороны ракетки. */
     public void RightCollisionWithRacket() throws Exception {
     }
 
     @Test
-    /** Тест коллизии шара и роя, точка касания сверху шара */
-    public void TopCollisionWithRoy() throws Exception {
+    /** Тест коллизии шара и роя */
+    public void CollisionWithRoy() throws Exception {
     }
 
     @Test
-    /** Тест коллизии шара и роя, точка касания снизу шара */
-    public void BottomCollisionWithRoy() throws Exception {
-    }
-
-    @Test
-    /** Тест коллизии шара и роя, точка касания снизу шара */
-    public void LeftCollisionWithRoy() throws Exception {
-    }
-
-    @Test
-    /** Тест коллизии шара и роя, точка касания справа шара */
-    public void RightCollisionWithRoy() throws Exception {
-    }
-
-    @Test
-    /** Тест коллизии шара и двух кирпичей, точки касания сверху и слева шара. */
-    public void TopLeftCollisionWithBricks() throws Exception {
-    }
-
-    @Test
-    /** Тест коллизии шара и двух кирпичей, точки касания слева и снизу шара. */
-    public void LeftBottomCollisionWithBricks() throws Exception {
-    }
-
-    @Test
-    /** Тест коллизии шара и двух кирпичей, точки касания снизу и справа шара. */
-    public void BottomRightCollisionWithBricks() throws Exception {
-    }
-
-    @Test
-    /** Тест коллизии шара и двух кирпичей, точки касания справа и сверху шара. */
-    public void RightTopCollisionWithBricks() throws Exception {
+    /** Тест коллизии шара и края доски, точка касания снизу шара */
+    public void CollisionWithBottomBoard() throws Exception {
     }
 }
