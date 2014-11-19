@@ -57,27 +57,27 @@ public abstract class GameObjectModel implements OnCollisionWith {
     }
 
     @Override
-    public void CollisionWith(Brick opponent, int side) {
+    public void CollisionWith(Brick opponent, Direction direction) {
 
     }
 
     @Override
-    public void CollisionWith(Ball opponent, int side) {
+    public void CollisionWith(Ball opponent, Direction direction) {
 
     }
 
     @Override
-    public void CollisionWith(Racket opponent, int side) {
+    public void CollisionWith(Racket opponent, Direction direction) {
 
     }
 
     @Override
-    public void CollisionWith(Roy opponent, int side) {
+    public void CollisionWith(Roy opponent, Direction direction) {
 
     }
 
     @Override
-    public void CollisionWith(Board opponent, int side) {
+    public void CollisionWith(Board opponent, Direction direction) {
 
     }
 
