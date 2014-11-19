@@ -15,13 +15,26 @@ public abstract class GameObjectModel implements OnCollisionWith {
     /** Посредник между обработчиком коллизий и игровой моделью */
     protected Mediator mediator;
 
+    /** Показатель состояния игровой модели */
+    protected Boolean destroy = false;
+
     /**
      * Деструктор игровой модели.
      */
     public void destroy() {
-        view.destroy();
+        this.destroy = true;
+        this.view.destroy();
         this.view = null;
         this.mediator = null;
+    }
+
+    /**
+     * Получить состояние разрушения игровой модели.
+     * @return разрушение игровой модели.
+     */
+    public Boolean isDestroy()
+    {
+        return this.destroy;
     }
 
     /**
