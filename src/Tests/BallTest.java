@@ -143,6 +143,7 @@ public class BallTest {
         ball();
         roy();
         ball.setSpeed(new Speed(1,1));
+        ball.CollisionWith(roy, Direction.Top());
         Assert.assertTrue("Ball not destroy.", ball.isDestroy());
     }
 
@@ -152,7 +153,7 @@ public class BallTest {
         ball();
         board();
         ball.setSpeed(new Speed(1,1));
-        ball.hit(Direction.Bottom());
+        ball.CollisionWith(board, Direction.Bottom());
         Assert.assertTrue("Ball not destroy.", ball.isDestroy());
     }
 }
