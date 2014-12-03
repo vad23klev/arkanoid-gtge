@@ -7,13 +7,10 @@ import Physics.*;
  * Класс для описания игровой модели.
  * Created by vadim on 10/8/14.
  */
-public abstract class GameObjectModel implements OnCollisionWith {
+public abstract class GameObjectModel {
 
     /** Представление модели */
     protected GameObjectView view;
-
-    /** Посредник между обработчиком коллизий и игровой моделью */
-    protected Mediator mediator;
 
     /** Показатель состояния игровой модели */
     protected Boolean destroy = false;
@@ -25,7 +22,6 @@ public abstract class GameObjectModel implements OnCollisionWith {
         this.destroy = true;
         this.view.destroy();
         this.view = null;
-        this.mediator = null;
     }
 
     /**
@@ -69,30 +65,6 @@ public abstract class GameObjectModel implements OnCollisionWith {
         view.setSpeed(speed);
     }
 
-    @Override
-    public void CollisionWith(Brick opponent, Direction direction) {
-
-    }
-
-    @Override
-    public void CollisionWith(Ball opponent, Direction direction) {
-
-    }
-
-    @Override
-    public void CollisionWith(Racket opponent, Direction direction) {
-
-    }
-
-    @Override
-    public void CollisionWith(Roy opponent, Direction direction) {
-
-    }
-
-    @Override
-    public void CollisionWith(Board opponent, Direction direction) {
-
-    }
 
     @Override
     public boolean equals(Object object) {
@@ -108,9 +80,9 @@ public abstract class GameObjectModel implements OnCollisionWith {
      */
     public void hit(Direction direct) {
         if (direct.Angle() == Direction.Left().Angle() || direct.Angle() == Direction.Right().Angle()) {
-            hitByVerticalWall();
+            hitByVertical();
         } else if (direct.Angle() == Direction.Bottom().Angle() || direct.Angle() == Direction.Top().Angle()) {
-            hitByHorizontalWall();
+            hitByHorizontal();
         } else {
             hitByCorner(direct);
         }
@@ -125,16 +97,23 @@ public abstract class GameObjectModel implements OnCollisionWith {
     }
 
     /**
-     * Функция-реакция на удар с горизонтальной стеной.
+     * Функция-реакция на удар с горизонталью.
      */
-    protected void hitByHorizontalWall() {
+    protected void hitByHorizontal() {
 
     }
 
     /**
-     * Функция-реакция на удар с вертикальной стеной.
+     * Функция-реакция на удар с вертикалью.
      */
-    protected void hitByVerticalWall() {
+    protected void hitByVertical() {
 
+    }
+
+    /**
+     * @return представление модели.
+     */
+    public GameObjectView view() {
+        return view;
     }
 }
