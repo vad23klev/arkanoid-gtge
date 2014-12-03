@@ -14,6 +14,6 @@ public class Brick extends GameObjectModel{
      * @param position - позиция кирпича в начальный момент времени.
      */
     public Brick(Position position) {
-        this.view = new BrickView();
+        this.view = new BrickView(this, position);
     }
 }

@@ -14,8 +14,8 @@ public class RoyElement extends GameObjectModel{
     /**
      * Конструктор.
      */
-    public RoyElement(Roy parent) {
-        this.view = new RoyElementView();
+    public RoyElement(Roy parent, Position position) {
+        this.view = new RoyElementView(this, position);
         this.parent = parent;
     }
 

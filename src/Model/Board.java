@@ -12,8 +12,8 @@ public class Board  extends GameObjectModel {
     /**
      * Конструткор.
      */
-    public Board() {
-        this.view = new BoardView();
+    public Board(Position position) {
+        this.view = new BoardView(this, position);
     }
 
     /**

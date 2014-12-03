@@ -16,7 +16,6 @@ public class Ball extends GameObjectModel{
      * @param position - позиция шара в начальный момент времени.
      */
     public Ball(Position position) {
-        this.view = new BallView();
-        this.view.setPosition(position);
+        this.view = new BallView(this, position);
     }
 }
