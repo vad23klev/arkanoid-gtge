@@ -13,7 +13,6 @@ public class Board  extends GameObjectModel {
      * Конструткор.
      */
     public Board() {
-        this.mediator = new Mediator();
         this.view = new BoardView();
     }
 

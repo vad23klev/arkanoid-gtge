@@ -17,7 +17,6 @@ public class Roy  extends GameObjectModel {
      */
     public Roy(Position position) {
         this.elements = new RoyElement[MAX_ELEMENT_COUNT];
-        this.mediator = new Mediator();
         this.view = new RoyView();
     }
 

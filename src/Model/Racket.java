@@ -14,7 +14,6 @@ public class Racket  extends GameObjectModel {
      * @param position - позиция ракетки в начальный момент времени.
      */
     public Racket(Position position) {
-        this.mediator = new Mediator();
         this.view = new RacketView();
     }
 }
