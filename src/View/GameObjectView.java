@@ -14,6 +14,8 @@ public abstract class GameObjectView {
     /** Контейнер стпрайтов. */
     protected SpriteGroup sprites;
 
+
+
     /**
      * Получить модель представления.
      * @return модель представления.
@@ -25,7 +27,9 @@ public abstract class GameObjectView {
     protected GameObjectModel model;
 
     public void destroy() {
-
+        for (int i = 0; i < sprites.getSize(); i++) {
+            sprites.getSprites()[i].setActive(false);
+        }
     }
 
     public Position getPosition() {
@@ -33,17 +37,22 @@ public abstract class GameObjectView {
     }
 
     public void setPosition(Position position) {
-
+        sprites.getSprites()[0].setX(position.X);
+        sprites.getSprites()[0].setY(position.Y);
     }
 
     public Speed getSpeed() {
-        return null;
+        return new Speed(sprites.getSprites()[0].getHorizontalSpeed(),sprites.getSprites()[0].getVerticalSpeed());
     }
 
     public void setSpeed(Speed speed) {
-
+        for (int i = 0; i < sprites.getSize(); i++) {
+            sprites.getSprites()[i].setSpeed(speed.Horizontal, speed.Vertical);
+        }
     }
 
+    public GameObjectView(GameObjectModel model, Position position) {
+    }
     public boolean isMySprite(Sprite sprite) {
         for (int i=0; i < sprites.getSprites().length ;i++) {
             if (sprite.equals(sprites.getSprites()[i])) {
