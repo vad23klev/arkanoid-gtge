@@ -1,6 +1,6 @@
 package Model;
 
-import Physics.*;
+import Physics.Position;
 import View.BrickView;
 
 /**

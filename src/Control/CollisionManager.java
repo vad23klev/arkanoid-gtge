@@ -1,6 +1,12 @@
 package Control;
 
+import Control.CollisionControl.GameAdvanceCollisionGroup;
+import Control.CollisionControl.GameCollisionBounds;
+import Game.Arkanoid;
 import Model.Mediator;
+import com.golden.gamedev.object.background.ColorBackground;
+
+import java.awt.*;
 
 /**
  * Класс для обнаружения коллизий.

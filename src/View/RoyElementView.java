@@ -2,6 +2,7 @@ package View;
 
 import Model.GameObjectModel;
 import Physics.Position;
+import com.golden.gamedev.object.SpriteGroup;
 
 /**
  * Класс для описания представления элемента роя.
@@ -10,6 +11,6 @@ import Physics.Position;
 public class RoyElementView extends GameObjectView {
 
     public RoyElementView(GameObjectModel model, Position position) {
-        super(model, position);
+        super(model, new SpriteGroup("RoyElement"));
     }
 }

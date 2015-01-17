@@ -1,7 +1,11 @@
 package Model;
 
+import Game.Arkanoid;
+import Physics.Direction;
+import Physics.Position;
+import Physics.Speed;
 import View.GameObjectView;
-import Physics.*;
+import com.golden.gamedev.object.SpriteGroup;
 
 /**
  * Класс для описания игровой модели.
@@ -19,6 +23,7 @@ public abstract class GameObjectModel {
      * Деструктор игровой модели.
      */
     public void destroy() {
+        Arkanoid.keylistener.remove(this);
         this.destroy = true;
         this.view.destroy();
         this.view = null;
@@ -65,49 +70,16 @@ public abstract class GameObjectModel {
         view.setSpeed(speed);
     }
 
+    public int getId() {
+        return this.view().getSprites().getSprites()[0].getID();
+    }
+
 
     @Override
     public boolean equals(Object object) {
-        return  (this.view != null) &&
-                (((GameObjectModel)object).view != null) &&
-                (this.getPosition().equals(((Ball)object).getPosition())) &&
-                (this.getSpeed().equals(((Ball)object).getSpeed()));
-    }
-
-    /**
-     * Функция-реакция на удар.
-     * @param direct - направление удара.
-     */
-    public void hit(Direction direct) {
-        if (direct.Angle() == Direction.Left().Angle() || direct.Angle() == Direction.Right().Angle()) {
-            hitByVertical();
-        } else if (direct.Angle() == Direction.Bottom().Angle() || direct.Angle() == Direction.Top().Angle()) {
-            hitByHorizontal();
-        } else {
-            hitByCorner(direct);
-        }
-    }
-
-    /**
-     * Функция-реакция удар с уголком.
-     * @param direct- направление удара.
-     */
-    protected void hitByCorner(Direction direct) {
-
-    }
-
-    /**
-     * Функция-реакция на удар с горизонталью.
-     */
-    protected void hitByHorizontal() {
-
-    }
-
-    /**
-     * Функция-реакция на удар с вертикалью.
-     */
-    protected void hitByVertical() {
-
+        int first = this.view().getSprites().getSprites()[0].getID();
+        int second = ((GameObjectModel)object).view().getSprites().getSprites()[0].getID();
+        return  (this.view().getSprites().getSprites()[0].getID() == ((GameObjectModel)object).view().getSprites().getSprites()[0].getID());
     }
 
     /**
@@ -115,5 +87,20 @@ public abstract class GameObjectModel {
      */
     public GameObjectView view() {
         return view;
+    }
+
+    /**
+     * @return группу спрайтов модели.
+     */
+    public SpriteGroup getSprites() {
+        return this.view.getSprites();
+    }
+
+    public void keyUp(int code) {
+
+    }
+
+    public void keyDown(int code) {
+
     }
 }

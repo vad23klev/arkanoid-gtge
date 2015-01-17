@@ -1,7 +1,7 @@
 package Model;
 
+import Physics.Position;
 import View.RoyElementView;
-import Physics.*;
 
 /**
  * Класс для описания модели элемента роя.

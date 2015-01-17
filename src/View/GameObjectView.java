@@ -12,9 +12,20 @@ import Physics.*;
 public abstract class GameObjectView {
 
     /** Контейнер стпрайтов. */
-    protected SpriteGroup sprites;
+    protected final SpriteGroup sprites;
 
+    protected final GameObjectModel model;
 
+    public GameObjectView(GameObjectModel model, SpriteGroup sprites) {
+        this.sprites = sprites;
+        this.model = model;
+    }
+
+    public void destroy() {
+        for (int i = 0; i < sprites.getSize(); i++) {
+            sprites.getSprites()[i].setActive(false);
+        }
+    }
 
     /**
      * Получить модель представления.
@@ -24,21 +35,15 @@ public abstract class GameObjectView {
         return model;
     }
 
-    protected GameObjectModel model;
-
-    public void destroy() {
-        for (int i = 0; i < sprites.getSize(); i++) {
-            sprites.getSprites()[i].setActive(false);
-        }
-    }
-
     public Position getPosition() {
         return new Position(sprites.getSprites()[0].getX(), sprites.getSprites()[0].getY());
     }
 
     public void setPosition(Position position) {
-        sprites.getSprites()[0].setX(position.X);
-        sprites.getSprites()[0].setY(position.Y);
+        for (int i = 0; i < this.sprites.getSize(); i++) {
+            sprites.getSprites()[i].setX(position.X);
+            sprites.getSprites()[i].setY(position.Y);
+        }
     }
 
     public Speed getSpeed() {
@@ -51,8 +56,6 @@ public abstract class GameObjectView {
         }
     }
 
-    public GameObjectView(GameObjectModel model, Position position) {
-    }
     public boolean isMySprite(Sprite sprite) {
         for (int i=0; i < sprites.getSprites().length ;i++) {
             if (sprite.equals(sprites.getSprites()[i])) {
@@ -60,5 +63,9 @@ public abstract class GameObjectView {
             }
         }
         return false;
+    }
+
+    public SpriteGroup getSprites() {
+        return this.sprites;
     }
 }
