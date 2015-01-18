@@ -1,6 +1,7 @@
 package Model;
 
 import Physics.Direction;
+import Physics.Position;
 import Physics.Speed;
 import javafx.util.Pair;
 
@@ -35,14 +36,24 @@ public class Mediator {
                 }
             }
             else if(with.getClass() == Racket.class) {
-                switch (direction.Angle()) {
-                    case 0: who.setSpeed(new Speed(-who.getSpeed().Horizontal, who.getSpeed().Vertical)); break;
-                    case 90: who.setSpeed(new Speed(who.getSpeed().Horizontal, - who.getSpeed().Vertical)); break;
-                    case 180: who.setSpeed(new Speed(- who.getSpeed().Horizontal, who.getSpeed().Vertical)); break;
-                    case 270: who.setSpeed(new Speed(who.getSpeed().Horizontal, -who.getSpeed().Vertical)); break;
-                }
+                hitRocketBall(who,with);
             }
         }
+        return false;
+    }
+
+    /**
+     * Обработка столкновения мяча и ракетки.
+     * @param ball мяч.
+     * @param racket ракетка.
+     */
+    protected static boolean hitRocketBall(GameObjectModel ball, GameObjectModel racket) {
+        double cos = Math.abs((ball.getPosition().X + ball.getSprites().getSprites()[0].getWidth() / 2) -
+                (racket.getPosition().X + racket.getSprites().getSprites()[0].getWidth() / 2)) /
+                (racket.getSprites().getSprites()[0].getWidth() / 2);
+        double sin = Math.sqrt(1 - Math.pow(cos,2));
+        double len = Math.sqrt(Math.pow(ball.getSpeed().Horizontal,2) + Math.pow(ball.getSpeed().Vertical,2));
+        ball.setSpeed(new Speed(-len*cos,-len*sin));
         return false;
     }
 }
