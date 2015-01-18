@@ -58,7 +58,7 @@ public abstract class GameObjectView {
 
     public boolean isMySprite(Sprite sprite) {
         for (int i=0; i < sprites.getSprites().length ;i++) {
-            if (sprite.equals(sprites.getSprites()[i])) {
+            if (sprite.equals(sprites.getSprites()[i]) && sprites.getSprites()[i].isActive()) {
                 return true;
             }
         }
