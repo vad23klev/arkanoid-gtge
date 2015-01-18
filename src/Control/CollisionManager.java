@@ -4,6 +4,7 @@ import Control.CollisionControl.GameAdvanceCollisionGroup;
 import Control.CollisionControl.GameCollisionBounds;
 import Game.Arkanoid;
 import Model.Mediator;
+import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.background.ColorBackground;
 
 import java.awt.*;
@@ -26,7 +27,9 @@ public class CollisionManager {
     /**
      * Конструктор.
      */
-    public CollisionManager(Mediator mediator) {
-        this.mediator = mediator;
+    public CollisionManager(Arkanoid game) {
+        this.mediator = game.mediator;
+        GameAdvanceCollisionGroup advance = new GameAdvanceCollisionGroup();
+        Arkanoid.playfield.addCollisionGroup(Arkanoid.ballGroup, Arkanoid.racketGroup, advance);
     }
 }
