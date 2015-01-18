@@ -1,6 +1,7 @@
 package Control;
 
 import Control.CollisionControl.GameAdvanceCollisionGroup;
+import Control.CollisionControl.GameAdvanceCollisionGroupBall;
 import Control.CollisionControl.GameCollisionBounds;
 import Game.Arkanoid;
 import Model.Mediator;
@@ -31,5 +32,7 @@ public class CollisionManager {
         this.mediator = game.mediator;
         GameAdvanceCollisionGroup advance = new GameAdvanceCollisionGroup();
         Arkanoid.playfield.addCollisionGroup(Arkanoid.ballGroup, Arkanoid.racketGroup, advance);
+        advance = new GameAdvanceCollisionGroupBall();
+        Arkanoid.playfield.addCollisionGroup(Arkanoid.ballGroup, Arkanoid.ballGroup, advance);
     }
 }
