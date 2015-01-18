@@ -7,6 +7,7 @@ import Physics.Speed;
 import com.golden.gamedev.Game;
 import com.golden.gamedev.GameLoader;
 import com.golden.gamedev.object.PlayField;
+import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.background.ColorBackground;
 
 import java.awt.*;
@@ -28,6 +29,8 @@ public class Arkanoid extends Game {
 
     public static Mediator mediator;
 
+    public static CollisionManager collisionManager;
+
     public static int globalid = 0;
 
     public static final int width = 960;
@@ -35,6 +38,10 @@ public class Arkanoid extends Game {
     public static final int height = 640;
 
     public static final boolean fullscreenmod = false;
+
+    public static SpriteGroup racketGroup;
+
+    public static SpriteGroup ballGroup;
 
     public static void main(String[] args) {
         game = new GameLoader();
@@ -48,6 +55,20 @@ public class Arkanoid extends Game {
         Arkanoid.keylistener = new ArrayList<GameObjectModel>();
         Arkanoid.board = new Board(new Position(0, 0));
         Arkanoid.mediator = new Mediator();
+        Arkanoid.racketGroup = Arkanoid.playfield.addGroup(new SpriteGroup("racket"));
+        Arkanoid.ballGroup = Arkanoid.playfield.addGroup(new SpriteGroup("ball"));
+        ArrayList<GameObjectModel> arrayList = Arkanoid.board.models();
+        for (int i = 0; i < arrayList.size(); i++) {
+            if(arrayList.get(i).getClass() == Ball.class) {
+                arrayList.get(i).view().addStritesToGroup(Arkanoid.ballGroup);
+            } else if (arrayList.get(i).getClass() == Racket.class) {
+                arrayList.get(i).view().addStritesToGroup(Arkanoid.racketGroup);
+            }
+        }
+        Arkanoid.collisionManager = new CollisionManager(this);
+
+
+
     }
 
     @Override
