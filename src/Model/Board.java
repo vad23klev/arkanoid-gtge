@@ -52,4 +52,12 @@ public class Board  extends GameObjectModel {
         }
         return null;
     }
+
+    /**
+     * Модели на доске.
+     * @return массив моделей.
+     */
+    public ArrayList<GameObjectModel> models() {
+        return this.models;
+    }
 }
