@@ -68,4 +68,14 @@ public abstract class GameObjectView {
     public SpriteGroup getSprites() {
         return this.sprites;
     }
+
+    /**
+     * Добавить спрайты в группу.
+     * @param group добавить спрайты представления в группу.
+     */
+    public void addStritesToGroup(SpriteGroup group) {
+        for (int i = 0; i < sprites.getSize(); i++) {
+            group.add(sprites.getSprites()[i]);
+        }
+    }
 }
