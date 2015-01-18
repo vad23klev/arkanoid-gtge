@@ -38,6 +38,9 @@ public class Mediator {
             else if(with.getClass() == Racket.class) {
                 hitRocketBall(who,with);
             }
+            else if(with.getClass() == Ball.class) {
+                who.setSpeed(new Speed(-who.getSpeed().Horizontal, -who.getSpeed().Vertical));
+            }
         }
         return false;
     }
