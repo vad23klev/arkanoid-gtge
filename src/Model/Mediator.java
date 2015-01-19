@@ -49,11 +49,11 @@ public class Mediator {
                     case 0: who.setSpeed(new Speed(-who.getSpeed().Horizontal, who.getSpeed().Vertical)); break;
                     case 90: who.setSpeed(new Speed(who.getSpeed().Horizontal, - who.getSpeed().Vertical)); break;
                     case 180: who.setSpeed(new Speed(- who.getSpeed().Horizontal, who.getSpeed().Vertical)); break;
-                    case 270: who.destroy(); break;
+                    case 270: who.destroy(); notifyListeners(); break;
                 }
             }
             else if(with.getClass() == Racket.class) {
-                hitRocketBall(who,with);
+                hitRocketBall(who,with,direction);
             }
             else if(with.getClass() == Ball.class) {
                 who.setSpeed(new Speed(-who.getSpeed().Horizontal, -who.getSpeed().Vertical));
@@ -67,13 +67,18 @@ public class Mediator {
      * @param ball мяч.
      * @param racket ракетка.
      */
-    protected static boolean hitRocketBall(GameObjectModel ball, GameObjectModel racket) {
-        double cos = Math.abs((ball.getPosition().X + ball.getSprites().getSprites()[0].getWidth() / 2) -
-                (racket.getPosition().X + racket.getSprites().getSprites()[0].getWidth() / 2)) /
-                (racket.getSprites().getSprites()[0].getWidth() / 2);
-        double sin = Math.sqrt(1 - Math.pow(cos,2));
-        double len = Math.sqrt(Math.pow(ball.getSpeed().Horizontal,2) + Math.pow(ball.getSpeed().Vertical,2));
-        ball.setSpeed(new Speed(-len*cos,-len*sin));
+    protected static boolean hitRocketBall(GameObjectModel ball, GameObjectModel racket, Direction direction) {
+        if (direction.equals(Direction.Top())) {
+            double cos = Math.abs((ball.getPosition().X + ball.getSprites().getSprites()[0].getWidth() / 2) -
+                    (racket.getPosition().X + racket.getSprites().getSprites()[0].getWidth() / 2)) /
+                    (racket.getSprites().getSprites()[0].getWidth() / 2);
+            if (cos > 1.0) {cos = 0.98;}
+            double sin = Math.sqrt(1 - Math.pow(cos, 2));
+            double len = Math.sqrt(Math.pow(ball.getSpeed().Horizontal, 2) + Math.pow(ball.getSpeed().Vertical, 2));
+            ball.setSpeed(new Speed(-len * cos, -len * sin));
+        }   else {
+            ball.setSpeed(new Speed(-ball.getSpeed().Horizontal, ball.getSpeed().Vertical));
+        }
         return false;
     }
 }
