@@ -1,5 +1,6 @@
 package Model;
 
+import Game.Arkanoid;
 import Physics.Direction;
 import Physics.Position;
 import Physics.Speed;
@@ -40,6 +41,9 @@ public class Mediator {
     public static boolean hit(GameObjectModel who, GameObjectModel with, Direction direction) {
         if (who.getClass() == Racket.class) {
             if (with.getClass() == Board.class) {
+                if (who.getPosition().X <= 0) { who.setPosition(new Position(0,who.getPosition().Y));}
+                else if (who.getPosition().X >= Arkanoid.width - 150) { who.setPosition(new Position(Arkanoid.width - 150,who.getPosition().Y));}
+
 
             }
         }
@@ -68,14 +72,17 @@ public class Mediator {
      * @param racket ракетка.
      */
     protected static boolean hitRocketBall(GameObjectModel ball, GameObjectModel racket, Direction direction) {
+        int dir = 1;
+        if (ball.getSpeed().Horizontal < 0) { dir = -1;}
         if (direction.equals(Direction.Top())) {
             double cos = Math.abs((ball.getPosition().X + ball.getSprites().getSprites()[0].getWidth() / 2) -
                     (racket.getPosition().X + racket.getSprites().getSprites()[0].getWidth() / 2)) /
                     (racket.getSprites().getSprites()[0].getWidth() / 2);
             if (cos > 1.0) {cos = 0.98;}
+            else if (cos > -1.0) {cos = -0.98;}
             double sin = Math.sqrt(1 - Math.pow(cos, 2));
             double len = Math.sqrt(Math.pow(ball.getSpeed().Horizontal, 2) + Math.pow(ball.getSpeed().Vertical, 2));
-            ball.setSpeed(new Speed(-len * cos, -len * sin));
+            ball.setSpeed(new Speed(dir * Math.abs(len * cos), -len * sin));
         }   else {
             ball.setSpeed(new Speed(-ball.getSpeed().Horizontal, ball.getSpeed().Vertical));
         }
