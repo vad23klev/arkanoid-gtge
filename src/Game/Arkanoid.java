@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  * Created by nikita on 17.01.15.
  */
-public class Arkanoid extends Game {
+public class Arkanoid extends Game implements MeditorListener {
 
     public static GameLoader game;
 
@@ -43,6 +43,8 @@ public class Arkanoid extends Game {
 
     public static SpriteGroup ballGroup;
 
+    protected static boolean end;
+
     public static void main(String[] args) {
         game = new GameLoader();
         game.setup(new Arkanoid(), new Dimension(Arkanoid.width, Arkanoid.height), Arkanoid.fullscreenmod);
@@ -55,6 +57,7 @@ public class Arkanoid extends Game {
         Arkanoid.keylistener = new ArrayList<GameObjectModel>();
         Arkanoid.board = new Board(new Position(0, 0));
         Arkanoid.mediator = new Mediator();
+        Arkanoid.mediator.addListener(this);
         Arkanoid.racketGroup = Arkanoid.playfield.addGroup(new SpriteGroup("racket"));
         Arkanoid.ballGroup = Arkanoid.playfield.addGroup(new SpriteGroup("ball"));
         ArrayList<GameObjectModel> arrayList = Arkanoid.board.models();
@@ -66,6 +69,7 @@ public class Arkanoid extends Game {
             }
         }
         Arkanoid.collisionManager = new CollisionManager(this);
+        Arkanoid.end = false;
 
 
 
@@ -110,5 +114,18 @@ public class Arkanoid extends Game {
     @Override
     public void render(Graphics2D graphics2D) {
         Arkanoid.playfield.render(graphics2D);
+        if (Arkanoid.end) {
+            graphics2D.drawString("END OF GAME", 420,320);
+        }
+    }
+
+    @Override
+    public void update() {
+        Arkanoid.endGame();
+    }
+
+    public static void endGame() {
+        Arkanoid.playfield.clearPlayField();
+        Arkanoid.end = true;
     }
 }
