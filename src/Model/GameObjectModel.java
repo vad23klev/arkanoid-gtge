@@ -26,7 +26,6 @@ public abstract class GameObjectModel {
         Arkanoid.keylistener.remove(this);
         this.destroy = true;
         this.view.destroy();
-        this.view = null;
     }
 
     /**
