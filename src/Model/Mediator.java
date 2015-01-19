@@ -13,6 +13,23 @@ import java.util.ArrayList;
  */
 public class Mediator {
 
+    protected static ArrayList<MeditorListener> List;
+    public Mediator() {
+        List = new ArrayList<MeditorListener>();
+    }
+
+    public void addListener(MeditorListener listener) {
+        if (listener != null) {
+            List.add(listener);
+        }
+    }
+
+    protected static void notifyListeners() {
+        for (int i = 0; i < List.size(); i++) {
+            List.get(i).update();
+        }
+    }
+
     /**
      * Обработка коллизий.
      * @param who - объект, который столкнулся.
