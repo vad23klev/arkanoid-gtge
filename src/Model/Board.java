@@ -25,6 +25,7 @@ public class Board  extends GameObjectModel {
         Arkanoid.playfield.addGroup(this.getSprites());
         this.models.add(new Racket(new Position((Arkanoid.width - 150) / 2, Arkanoid.height - 50)));
         this.models.add(new Ball(new Position((Arkanoid.width - 25) / 2, Arkanoid.height - 75), new Speed(0, 0)));
+        this.models.add(new Ball(new Position((Arkanoid.width - 125) / 2, Arkanoid.height - 75), new Speed(0, 0)));
     }
 
     /**
@@ -59,5 +60,15 @@ public class Board  extends GameObjectModel {
      */
     public ArrayList<GameObjectModel> models() {
         return this.models;
+    }
+
+    public int Count(Class type) {
+        int count = 0;
+        for(GameObjectModel model : this.models) {
+            if (model.getClass() == type && !model.isDestroy()) {
+                count++;
+            }
+        }
+        return count;
     }
 }
