@@ -34,5 +34,7 @@ public class CollisionManager {
         Arkanoid.playfield.addCollisionGroup(Arkanoid.ballGroup, Arkanoid.racketGroup, advance);
         advance = new GameAdvanceCollisionGroupBall();
         Arkanoid.playfield.addCollisionGroup(Arkanoid.ballGroup, Arkanoid.ballGroup, advance);
+        Arkanoid.playfield.addCollisionGroup(Arkanoid.ballGroup, null, new GameCollisionBounds(new ColorBackground(Color.white, Arkanoid.width, Arkanoid.height)));
+        Arkanoid.playfield.addCollisionGroup(Arkanoid.racketGroup, null, new GameCollisionBounds(new ColorBackground(Color.white, Arkanoid.width, Arkanoid.height)));
     }
 }
