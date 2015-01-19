@@ -125,7 +125,9 @@ public class Arkanoid extends Game implements MeditorListener {
     }
 
     public static void endGame() {
-        Arkanoid.playfield.clearPlayField();
-        Arkanoid.end = true;
+        if (Arkanoid.board.Count(Ball.class) == 0) {
+            Arkanoid.playfield.clearPlayField();
+            Arkanoid.end = true;
+        }
     }
 }
