@@ -43,7 +43,9 @@ public class Arkanoid extends Game implements MeditorListener {
 
     public static SpriteGroup ballGroup;
 
-    protected static boolean end;
+    public static boolean start;
+
+    public static boolean end;
 
     public static void main(String[] args) {
         game = new GameLoader();
@@ -69,10 +71,8 @@ public class Arkanoid extends Game implements MeditorListener {
             }
         }
         Arkanoid.collisionManager = new CollisionManager(this);
+        Arkanoid.start = false;
         Arkanoid.end = false;
-
-
-
     }
 
     @Override

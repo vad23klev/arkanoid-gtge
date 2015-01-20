@@ -36,6 +36,7 @@ public class Ball extends GameObjectModel{
                 if (!this.launched) {
                     this.setSpeed(new Speed(0, -0.3));
                     this.launched = true;
+                    Arkanoid.start = true;
                 } break;
         }
     }

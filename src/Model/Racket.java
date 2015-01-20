@@ -29,11 +29,11 @@ public class Racket  extends GameObjectModel {
     public void keyUp(int code) {
         switch (code) {
             case KeyEvent.VK_RIGHT:
-                if (this.getSpeed().Horizontal > 0) {
+                if (this.getSpeed().Horizontal > 0 && Arkanoid.start) {
                     this.setSpeed(new Speed(0, 0));
                 } break;
             case KeyEvent.VK_LEFT:
-                if (this.getSpeed().Horizontal < 0) {
+                if (this.getSpeed().Horizontal < 0 && Arkanoid.start) {
                     this.setSpeed(new Speed(0, 0));
                 } break;
         }
@@ -43,11 +43,11 @@ public class Racket  extends GameObjectModel {
     public void keyDown(int code) {
         switch (code) {
             case KeyEvent.VK_RIGHT:
-                if (this.getSpeed().Horizontal >= 0) {
+                if (this.getSpeed().Horizontal >= 0 && Arkanoid.start) {
                     this.setSpeed(new Speed(0.3, 0));
                 } break;
             case KeyEvent.VK_LEFT:
-                if (this.getSpeed().Horizontal <= 0) {
+                if (this.getSpeed().Horizontal <= 0 && Arkanoid.start) {
                     this.setSpeed(new Speed(-0.3, 0));
                 } break;
         }
